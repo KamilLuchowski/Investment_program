@@ -6,6 +6,11 @@ UI::UI()
 {
 }
 
+UI::UI(investment *m_inv)
+{
+	inv = m_inv;
+}
+
 
 UI::~UI()
 {

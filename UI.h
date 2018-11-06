@@ -11,9 +11,11 @@ private:
 	const int MainMenuChoices = 2;
 	const int InvestmentMenuChoices = 5;
 	const int TestMenuChoices = 2;
+	investment *inv;
 
 public:
 	UI();
+	UI(investment *inv);
 	~UI();
 	int mainMenu();
 	int investmentMenu();
