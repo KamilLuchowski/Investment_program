@@ -13,5 +13,7 @@ public:
 	~currency();
 
 	void show();
+	double getPrice();
+	std::string getName();
 };
 

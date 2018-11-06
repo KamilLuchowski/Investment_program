@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "currency.h"
 
-using namespace std;
 currency::currency()
 {
 }
@@ -19,5 +18,15 @@ currency::~currency()
 
 void currency::show()
 {
-	cout << "Currency called " << name << " is worth " << price << " PLN"<<endl;
+	std::cout << "Currency called " << name << " is worth " << price << " PLN"<<std::endl;
+}
+
+double currency::getPrice()
+{
+	return price;
+}
+
+std::string currency::getName()
+{
+	return name;
 }
