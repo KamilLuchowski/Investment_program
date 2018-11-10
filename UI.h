@@ -7,7 +7,7 @@ using namespace std;
 class UI
 {
 private:
-	int nr;
+	int nr; // TODO refactor
 	const int MainMenuChoices = 2;
 	const int InvestmentMenuChoices = 5;
 	const int TestMenuChoices = 2;

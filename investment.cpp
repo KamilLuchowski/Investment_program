@@ -6,7 +6,7 @@ investment::investment()
 	money = 0.00;
 	percent = 0.00;
 	months = 0;
-	currName = "no_name";
+	currName = "PLN";
 	currPrice = 1;
 }
 
@@ -14,23 +14,16 @@ investment::~investment()
 {
 }
 
-investment::investment(double m_money, double m_percent, int m_months, std::string m_currName, double m_currPrice)
+investment::investment(double m_money, double m_percent, int m_months, std::string m_currName, double m_currPrice, int m_capitalizations)
 {
 	money = m_money;
 	percent = m_percent;
 	months = m_months;
 	currName=m_currName;
 	currPrice = m_currPrice;
+	capitalizations = m_capitalizations;
 }
 
-/*void investment::addMoney(int value)
-{	
-	if (value > 0)
-		money += value;
-	else
-		std::cout << "Kwota musi byæ wiêksza od zera!" << std::endl;
-}
-*/
 void investment::setPercent(double m_percent)
 {
 	percent = m_percent;
@@ -52,9 +45,22 @@ void investment::setCurrency(std::string m_currName, double m_currPrice)
 	currPrice = m_currPrice;
 }
 
-void investment::show()
-{	
-	std::cout << "The value of your investment: " << money << " " <<currName <<std::endl;
+void investment::changeCurrency(std::string new_name, double new_price)
+{
+	double ratio = currPrice / new_price;
+	currPrice = new_price;
+	currName = new_name;
+	money *= ratio;
+	countInvestment();
+}
+
+void investment::countInvestment() //usunac kapitalizacje??
+{
+	moneyPlus = money;
+	for (int i = 0; i < capitalizations; i++) {
+		moneyPlus = (moneyPlus*percent / capitalizations) + moneyPlus;
+	}
+	
 }
 
 double investment::getAccountBalance()

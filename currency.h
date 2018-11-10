@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 
+/*
+
+*/
 class currency
 {
 private:
@@ -16,4 +19,3 @@ public:
 	double getPrice();
 	std::string getName();
 };
-

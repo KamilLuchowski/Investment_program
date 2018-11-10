@@ -18,12 +18,14 @@ UI::~UI()
 
 int UI::mainMenu()
 {
-	cout << "Welcome to the Investment Simulator v1.0." << endl;
+	cout << "Welcome to the Investment Simulator v1.0." << endl <<endl;
 	cout << "Choose an option: " << endl;
 	cout << "1.Your investment." << endl;
 	cout << "2.Auto-tests." << endl;
 	cout << "0.Exit" << endl;
-	return Choice(0, MainMenuChoices);
+	int c = Choice(0, MainMenuChoices);
+	system("cls");
+	return c;
 }
 
 int UI::investmentMenu()
@@ -36,7 +38,9 @@ int UI::investmentMenu()
 	cout << "4.Check an account balance." << endl;
 	cout << "5.Reset an investment." << endl;
 	cout << "0. Back to main menu." << endl;
-	return Choice(0, InvestmentMenuChoices);
+	int c = Choice(0, InvestmentMenuChoices);
+	system("cls");
+	return c;
 }
 
 int UI::testMenu()
@@ -46,7 +50,9 @@ int UI::testMenu()
 	cout << "1.Test one" << endl;
 	cout << "2.Test two" << endl;
 	cout << "0. Back to main menu." << endl;
-	return Choice(0, TestMenuChoices);
+	int c =  Choice(0, TestMenuChoices);
+	system("cls");
+	return c;
 }
 
 void UI::Menu()
@@ -61,6 +67,14 @@ void UI::Menu()
 				{
 				case 1:
 					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
 				case 0:
 					nr = 0;
 					break;
@@ -70,13 +84,20 @@ void UI::Menu()
 		}
 				break;
 		case 2: {
-			switch (testMenu())
-			{
-			default:
+				switch (testMenu())
+				{
+				case 1:
+					break;
+				case 2:
+					break;
+				default:
+					break;
+				}
+		}	
 				break;
-			}
-		}	break;
-		case 0: exit(0);
+
+		case 0: 
+			exit(0);
 		default:
 			break;
 		}
@@ -85,11 +106,15 @@ void UI::Menu()
 
 int UI::Choice(int min, int max)
 {
-	cin >> nr;
-	while (nr > max || nr < min) {
+	int i;
+	cin.clear();
+	cin >> i;
+	while (i > max || i < min) {
+		cin.clear();
+		cin.sync();
 		cout << "Something went wrong. Try again." << endl;
-		cin >> nr;
+		cin >> i;
 	}
-
-	return nr;
+	return i;
 }
+
