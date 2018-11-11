@@ -5,15 +5,15 @@
 /*
 
 */
-class currency
+class Currency
 {
 private:
 	double price;
 	std::string name;
 public:
-	currency();
-	currency(double m_price, std::string m_name);
-	~currency();
+	Currency();
+	Currency(double m_price, std::string m_name);
+	~Currency();
 
 	void show();
 	double getPrice();

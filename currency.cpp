@@ -1,32 +1,31 @@
 #include "pch.h"
 #include "currency.h"
 
-currency::currency()
+Currency::Currency()
 {
 }
 
-currency::currency(double m_price, std::string m_name)
+Currency::Currency(double m_price, std::string m_name)
 {
 	price = m_price;
 	name = m_name;
 }
 
-
-currency::~currency()
+Currency::~Currency()
 {
 }
 
-void currency::show()
+void Currency::show()
 {
 	std::cout << "Currency called " << name << " is worth " << price << " PLN"<<std::endl;
 }
 
-double currency::getPrice()
+double Currency::getPrice()
 {
 	return price;
 }
 
-std::string currency::getName()
+std::string Currency::getName()
 {
 	return name;
 }

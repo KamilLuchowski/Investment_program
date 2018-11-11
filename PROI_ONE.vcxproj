@@ -153,12 +153,14 @@
   <ItemGroup>
     <ClInclude Include="currency.h" />
     <ClInclude Include="investment.h" />
+    <ClInclude Include="investmentManager.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="currency.cpp" />
     <ClCompile Include="investment.cpp" />
+    <ClCompile Include="investmentManager.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -7,15 +7,14 @@ using namespace std;
 class UI
 {
 private:
-	int nr; // TODO refactor
 	const int MainMenuChoices = 2;
 	const int InvestmentMenuChoices = 5;
 	const int TestMenuChoices = 2;
-	investment *inv;
+	Investment *inv;
 
 public:
 	UI();
-	UI(investment *inv);
+	UI(Investment *inv);
 	~UI();
 	int mainMenu();
 	int investmentMenu();

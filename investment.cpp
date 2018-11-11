@@ -1,74 +1,92 @@
 #include "pch.h"
 #include "investment.h"
 
-investment::investment()
+Investment::Investment()
 {
 	money = 0.00;
 	percent = 0.00;
 	months = 0;
 	currName = "PLN";
-	currPrice = 1;
 }
 
-investment::~investment()
+Investment::~Investment()
 {
 }
 
-investment::investment(double m_money, double m_percent, int m_months, std::string m_currName, double m_currPrice, int m_capitalizations)
-{
-	money = m_money;
-	percent = m_percent;
-	months = m_months;
-	currName=m_currName;
-	currPrice = m_currPrice;
-	capitalizations = m_capitalizations;
-}
-
-void investment::setPercent(double m_percent)
-{
-	percent = m_percent;
-}
-
-void investment::setMoney(double m_money)
+Investment::Investment(double m_money, double m_percent, int m_months, std::string m_currName)
 {
 	money = m_money;
+	moneyPlusProfit = m_money;
+	percent = m_percent;
+	months = m_months;
+	currName = m_currName;
+
+	//currency rates
+	currTab["PLN"]["USD"] = 3.78;
+	currTab["PLN"]["EUR"] = 4.29;
+	currTab["PLN"]["CHF"] = 3.76;
+	currTab["PLN"]["GBP"] = 4.91;
 }
 
-void investment::setMonths(int m_months)
+void Investment::setPercent(double m_percent)
+{
+	percent = m_percent;
+}
+
+void Investment::setMoney(double m_money)
+{
+	money = m_money;
+}
+
+void Investment::setMonths(int m_months)
 {
 	months = m_months;
 }
 
-void investment::setCurrency(std::string m_currName, double m_currPrice)
+void Investment::setCurrency(std::string m_currName)
 {
 	currName = m_currName;
-	currPrice = m_currPrice;
 }
 
-void investment::changeCurrency(std::string new_name, double new_price)
+void Investment::changeCurrency(std::string new_name)
 {
-	double ratio = currPrice / new_price;
-	currPrice = new_price;
 	currName = new_name;
-	money *= ratio;
+	money = money * currTab[currName][new_name];
 	countInvestment();
 }
 
-void investment::countInvestment() //usunac kapitalizacje??
+double Investment::countInvestment()
 {
-	moneyPlus = money;
-	for (int i = 0; i < capitalizations; i++) {
-		moneyPlus = (moneyPlus*percent / capitalizations) + moneyPlus;
-	}
-	
+	return moneyPlusProfit = money * percent;
 }
 
-double investment::getAccountBalance()
+double Investment::getMoney()
 {
-	return moneyPlus;
+	return money;
 }
 
-double investment::getProfit()
+int Investment::getMonths()
 {
-	return moneyPlus-money;
+	return months;
 }
+
+double Investment::getPercent()
+{
+	return percent;
+}
+
+std::string Investment::getCurrName()
+{
+	return currName;
+}
+
+double Investment::getAccountBalance()
+{
+	return moneyPlusProfit;
+}
+
+double Investment::getProfit()
+{
+	return moneyPlusProfit-money;
+}
+

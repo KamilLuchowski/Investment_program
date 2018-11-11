@@ -1,31 +1,38 @@
 #pragma once
 #include <iostream>
 #include "currency.h"
+#include<map>
+#include<string>
 
-class investment
+class Investment
 {
+
 private:
 	double money;
-	double moneyPlus;
+	double moneyPlusProfit;
 	double percent;
 	int months;
 	std::string currName;
-	double currPrice;
-	int capitalizations;
-	std::map <std::string, std::map <string, int> > currTab;
+	std::map <std::string, std::map <std::string, double> > currTab;
 
 public:
-	investment();
-	~investment();
+	Investment();
+	~Investment();
 
-	investment(double m_money, double m_percent, int m_months, std::string m_currName, double m_currPrice, int m_capitalizations);
+	Investment(double m_money, double m_percent, int m_months, std::string m_currName);
+
 	void setPercent(double m_percent);
 	void setMoney(double m_money);
 	void setMonths(int m_months);
-	void setCurrency(std::string m_name, double m_currPrice);
-	void changeCurrency(std::string new_name, double new_price);
-	void countInvestment();
+	void setCurrency(std::string m_name);
 
+	void changeCurrency(std::string new_name);
+	double countInvestment();
+
+	double getMoney();
+	int getMonths();
+	double getPercent();
+	std::string getCurrName();
 	double getAccountBalance();
 	double getProfit();
 

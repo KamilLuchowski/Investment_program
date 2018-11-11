@@ -6,7 +6,7 @@ UI::UI()
 {
 }
 
-UI::UI(investment *m_inv)
+UI::UI(Investment *m_inv) //do usuniecia??
 {
 	inv = m_inv;
 }
@@ -57,6 +57,7 @@ int UI::testMenu()
 
 void UI::Menu()
 {
+	int nr;
 	while (1) {
 		nr = 1;
 		switch (mainMenu())
