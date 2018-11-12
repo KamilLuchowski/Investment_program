@@ -15,11 +15,12 @@ private:
 	std::string currName;
 	std::map <std::string, std::map <std::string, double> > currTab;
 
+
 public:
 	Investment();
 	~Investment();
 
-	Investment(double m_money, double m_percent, int m_months, std::string m_currName);
+	//Investment(double m_money, double m_percent, int m_months, std::string m_currName); probably never used, to delete
 
 	void setPercent(double m_percent);
 	void setMoney(double m_money);

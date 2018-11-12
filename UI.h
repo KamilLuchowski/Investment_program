@@ -18,6 +18,11 @@ public:
 	int investmentMenu();
 	void Menu();
 	
-	int Choice(int min, int max);
+	int ChoiceInt(int min, int max);
+	double ChoiceDouble(double min, double max);
+
+	void addInvestment();
+	void changeInvRate();
+	void changeCurrency();
 };
 

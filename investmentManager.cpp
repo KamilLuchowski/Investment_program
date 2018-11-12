@@ -3,6 +3,8 @@
 
 InvestmentManager::InvestmentManager()
 {
+	currentInv = NULL;
+	invCounter = 0;
 }
 
 
@@ -15,6 +17,7 @@ Investment* InvestmentManager::addInvestment()
 	Investment *investment = NULL;
 	investment = new Investment();
 	invTab.push_back(investment);
+	currentInv = investment;
 
 	invCounter++;
 
@@ -30,4 +33,9 @@ Investment* InvestmentManager::chooseInvestment(int choice)
 Investment* InvestmentManager::getCurrentInv()
 {
 	return currentInv;
+}
+
+int InvestmentManager::getInvCounter()
+{
+	return invCounter;
 }

@@ -7,19 +7,6 @@ Investment::Investment()
 	percent = 0.00;
 	months = 0;
 	currName = "PLN";
-}
-
-Investment::~Investment()
-{
-}
-
-Investment::Investment(double m_money, double m_percent, int m_months, std::string m_currName)
-{
-	money = m_money;
-	moneyPlusProfit = m_money;
-	percent = m_percent;
-	months = m_months;
-	currName = m_currName;
 
 	//currency rates
 	currTab["PLN"]["USD"] = 3.78;
@@ -27,6 +14,20 @@ Investment::Investment(double m_money, double m_percent, int m_months, std::stri
 	currTab["PLN"]["CHF"] = 3.76;
 	currTab["PLN"]["GBP"] = 4.91;
 }
+
+Investment::~Investment()
+{
+}
+/* //probably never used, to delete
+Investment::Investment(double m_money, double m_percent, int m_months, std::string m_currName)
+{
+	money = m_money;
+	moneyPlusProfit = m_money;
+	percent = m_percent;
+	months = m_months;
+	currName = m_currName;
+}
+*/
 
 void Investment::setPercent(double m_percent)
 {
@@ -50,14 +51,15 @@ void Investment::setCurrency(std::string m_currName)
 
 void Investment::changeCurrency(std::string new_name)
 {
-	currName = new_name;
+	std::cout <<"CENA: "<< currTab[currName][new_name] <<std::endl;
 	money = money * currTab[currName][new_name];
+	currName = new_name;
 	countInvestment();
 }
 
 double Investment::countInvestment()
 {
-	return moneyPlusProfit = money * percent + money;
+	return moneyPlusProfit = (money * percent)/100 + money;
 }
 
 void Investment::resetInvestment()

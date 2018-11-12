@@ -16,6 +16,8 @@ public:
 	Investment* addInvestment();
 	Investment* chooseInvestment(int choice);
 	void deleteInvestment(); //usunac z wektora i z pamieci, i invCounter--, mozna uzyc choosInvestment
+
 	Investment* getCurrentInv();
+	int getInvCounter();
 };
 
