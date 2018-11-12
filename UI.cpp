@@ -38,15 +38,14 @@ int UI::investmentMenu()
 	else {
 		cout << "YOUR INVESTMENT MENU" << endl << endl;
 		cout << "You have " << invManager.getInvCounter() << " investment(s)." << endl;
-		cout << "Chosen investment: " << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName()<<" " <<invManager.getCurrentInv()->getPercent() << " " << invManager.getCurrentInv()->getAccountBalance() << endl;
+		cout << "Chosen investment: " << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName() << " " << invManager.getCurrentInv()->getPercent() << " " << invManager.getCurrentInv()->getAccountBalance() << endl;
 		cout << "Choose an option: " << endl;
 		cout << "1.Make a new investment." << endl;
 		cout << "2.Change an investment rate." << endl;
 		cout << "3.Change the currency." << endl;
 		cout << "4.Check an account balance." << endl;
-		cout << "5.Reset an investment." << endl;
-		cout << "6.Delete this investment." << endl;
-		cout << "7.Change the investment" << endl;
+		cout << "5.Delete this investment." << endl;
+		cout << "6.Change the investment" << endl;
 		cout << "0.Back to main menu." << endl;
 		int c = ChoiceInt(0, InvestmentMenuChoices);
 		system("cls");
@@ -58,7 +57,7 @@ void UI::Menu()
 {
 	int nr;
 	while (1) {
-		nr = 1;
+		nr = 1; //condition to end the loop
 		switch (mainMenu())
 		{
 		case 1: {
@@ -77,6 +76,10 @@ void UI::Menu()
 				case 4:
 					break;
 				case 5:
+					deleteInvestment();
+					break;
+				case 6:
+					changeInvestment();
 					break;
 				case 0:
 					nr = 0;
@@ -130,7 +133,7 @@ void UI::addInvestment()
 {
 	Investment* tmp = invManager.addInvestment();
 
-	cout << "Enter the amount of money: " << endl;
+	cout << "Enter the amount of money: " <<endl;
 	tmp->setMoney(ChoiceDouble(0, 750000));
 
 	cout << "Enter the investment rate(%): " << endl;
@@ -142,6 +145,11 @@ void UI::addInvestment()
 	tmp->setCurrency("PLN");
 	tmp->countInvestment();
 	system("cls");
+}
+
+void UI::deleteInvestment()
+{
+	invManager.deleteCurrentInvestment();
 }
 
 void UI::changeInvRate()
@@ -172,5 +180,16 @@ void UI::changeCurrency()
 		return;
 
 
+}
+
+void UI::changeInvestment()
+{
+	cout << "Choose an investment: " <<endl;
+	vector<Investment*>* tmp = invManager.getInvestments();
+	vector <Investment*> invTab = *tmp;
+	for (int i = 0; i < (invTab).size(); i++)
+		cout << i + 1<<". " << invTab[i]->getMoney() << endl;
+
+	invManager.changeCurrentInv(ChoiceInt(1, invTab.size())-1);
 }
 

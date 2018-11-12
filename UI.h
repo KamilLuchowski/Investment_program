@@ -9,7 +9,7 @@ class UI
 {
 private:
 	const int MainMenuChoices = 2;
-	const int InvestmentMenuChoices = 5;
+	const int InvestmentMenuChoices = 6;
 	InvestmentManager invManager;
 public:
 	UI();
@@ -22,7 +22,9 @@ public:
 	double ChoiceDouble(double min, double max);
 
 	void addInvestment();
+	void deleteInvestment();
 	void changeInvRate();
 	void changeCurrency();
+	void changeInvestment();
 };
 

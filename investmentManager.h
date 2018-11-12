@@ -15,8 +15,10 @@ public:
 
 	Investment* addInvestment();
 	Investment* chooseInvestment(int choice);
-	void deleteInvestment(); //usunac z wektora i z pamieci, i invCounter--, mozna uzyc choosInvestment
-
+	void deleteCurrentInvestment();
+	void changeCurrentInv(int nr);
+	
+	std::vector<Investment*>* getInvestments();
 	Investment* getCurrentInv();
 	int getInvCounter();
 };
