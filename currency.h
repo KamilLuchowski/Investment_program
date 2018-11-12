@@ -3,7 +3,7 @@
 #include <string>
 
 /*
-
+chyba ca³a klasa do usuniecia, bo wydaje sie ze nie bedzie nigdzie uzyta
 */
 class Currency
 {
@@ -15,7 +15,7 @@ public:
 	Currency(double m_price, std::string m_name);
 	~Currency();
 
-	void show();
+	void show(); //do usuniecia
 	double getPrice();
 	std::string getName();
 };

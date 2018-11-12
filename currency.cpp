@@ -15,7 +15,7 @@ Currency::~Currency()
 {
 }
 
-void Currency::show()
+void Currency::show() //do usuniecia
 {
 	std::cout << "Currency called " << name << " is worth " << price << " PLN"<<std::endl;
 }

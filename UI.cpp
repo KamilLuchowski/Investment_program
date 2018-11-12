@@ -6,12 +6,6 @@ UI::UI()
 {
 }
 
-UI::UI(Investment *m_inv) //do usuniecia??
-{
-	inv = m_inv;
-}
-
-
 UI::~UI()
 {
 }
@@ -43,18 +37,6 @@ int UI::investmentMenu()
 	return c;
 }
 
-int UI::testMenu()
-{
-	cout << "TEST MENU" << endl << endl;
-	cout << "Choose an option: " << endl;
-	cout << "1.Test one" << endl;
-	cout << "2.Test two" << endl;
-	cout << "0. Back to main menu." << endl;
-	int c =  Choice(0, TestMenuChoices);
-	system("cls");
-	return c;
-}
-
 void UI::Menu()
 {
 	int nr;
@@ -67,6 +49,7 @@ void UI::Menu()
 				switch (investmentMenu())
 				{
 				case 1:
+					//invManager.getCurrentInv()-> a moze tutaj dodac opcje zmiany inwestycji?? albo tu, albo w menu g³ownym
 					break;
 				case 2:
 					break;
@@ -83,20 +66,11 @@ void UI::Menu()
 					break;
 				}
 		}
-				break;
+			break;
 		case 2: {
-				switch (testMenu())
-				{
-				case 1:
-					break;
-				case 2:
-					break;
-				default:
-					break;
-				}
+			//tu bedzie wywolanie testow
 		}	
-				break;
-
+			break;
 		case 0: 
 			exit(0);
 		default:

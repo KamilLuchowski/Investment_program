@@ -23,5 +23,11 @@ Investment* InvestmentManager::addInvestment()
 
 Investment* InvestmentManager::chooseInvestment(int choice)
 {
+	currentInv = invTab[choice];
 	return invTab[choice];
+}
+
+Investment* InvestmentManager::getCurrentInv()
+{
+	return currentInv;
 }

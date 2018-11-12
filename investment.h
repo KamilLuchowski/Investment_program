@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include "currency.h"
-#include<map>
-#include<string>
+#include <map>
+#include <string>
 
 class Investment
 {
@@ -28,6 +28,7 @@ public:
 
 	void changeCurrency(std::string new_name);
 	double countInvestment();
+	void resetInvestment();
 
 	double getMoney();
 	int getMonths();

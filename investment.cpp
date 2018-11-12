@@ -57,7 +57,15 @@ void Investment::changeCurrency(std::string new_name)
 
 double Investment::countInvestment()
 {
-	return moneyPlusProfit = money * percent;
+	return moneyPlusProfit = money * percent + money;
+}
+
+void Investment::resetInvestment()
+{
+	money = 0.00;
+	percent = 0.00;
+	months = 0;
+	currName = "PLN";
 }
 
 double Investment::getMoney()

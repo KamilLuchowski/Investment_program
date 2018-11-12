@@ -7,6 +7,7 @@ class InvestmentManager
 {
 private:
 	std::vector <Investment*> invTab;
+	Investment* currentInv;
 	int invCounter;
 public:
 	InvestmentManager();
@@ -14,6 +15,7 @@ public:
 
 	Investment* addInvestment();
 	Investment* chooseInvestment(int choice);
-	void deleteInvestment(); //usunac z wektora i z pamieci
+	void deleteInvestment(); //usunac z wektora i z pamieci, i invCounter--, mozna uzyc choosInvestment
+	Investment* getCurrentInv();
 };
 
