@@ -1,10 +1,12 @@
+//investment.h
+
 #pragma once
 #include <iostream>
 #include "currency.h"
 #include <map>
 #include <string>
 
-class Investment
+class Investment //Investment class control the parametres of an investment, it allow to set parameters, change currency
 {
 
 private:
@@ -20,12 +22,11 @@ public:
 	Investment();
 	~Investment();
 
-	//Investment(double m_money, double m_percent, int m_months, std::string m_currName); probably never used, to delete
-
-	void setPercent(double m_percent);
+	void changePercent(double m_percent);
 	void setMoney(double m_money);
 	void setMonths(int m_months);
 	void setCurrency(std::string m_name);
+	void setPercent(double m_percent);
 
 	void changeCurrency(std::string new_name);
 	double countInvestment();

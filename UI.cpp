@@ -38,7 +38,7 @@ int UI::investmentMenu()
 	else {
 		cout << "YOUR INVESTMENT MENU" << endl << endl;
 		cout << "You have " << invManager.getInvCounter() << " investment(s)." << endl;
-		cout << "Chosen investment: " << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName() << " " << invManager.getCurrentInv()->getPercent() << " " << invManager.getCurrentInv()->getAccountBalance() << endl;
+		cout << "Chosen investment: " << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName() << " " << invManager.getCurrentInv()->getPercent() << "%" << endl;
 		cout << "Choose an option: " << endl;
 		cout << "1.Make a new investment." << endl;
 		cout << "2.Change an investment rate." << endl;
@@ -61,7 +61,7 @@ void UI::Menu()
 		switch (mainMenu())
 		{
 		case 1: {
-			while (nr != 0)
+			while (nr != 0) {
 				switch (investmentMenu())
 				{
 				case 1:
@@ -74,6 +74,8 @@ void UI::Menu()
 					changeCurrency();
 					break;
 				case 4:
+					accountSummary();
+					getchar(); getchar();
 					break;
 				case 5:
 					deleteInvestment();
@@ -87,10 +89,12 @@ void UI::Menu()
 				default:
 					break;
 				}
+				system("cls");
+			}
 		}
 			break;
 		case 2: {
-			//tu bedzie wywolanie testow
+			test.testAll();
 		}	
 			break;
 		case 0: 
@@ -144,7 +148,6 @@ void UI::addInvestment()
 
 	tmp->setCurrency("PLN");
 	tmp->countInvestment();
-	system("cls");
 }
 
 void UI::deleteInvestment()
@@ -155,12 +158,11 @@ void UI::deleteInvestment()
 void UI::changeInvRate()
 {
 	cout << "Enter a new investment rate(%): " << endl;
-	invManager.getCurrentInv()->setPercent(ChoiceDouble(0, 100));
-	invManager.getCurrentInv()->countInvestment(); //to refactor
+	invManager.getCurrentInv()->changePercent(ChoiceDouble(0, 100));
 }
 
 void UI::changeCurrency()
-{
+{	
 	cout << "Enter the currency you want convert to: (EUR/GBP/CHF)" << endl;
 	cout << "1.EUR" << endl;
 	cout << "2.CHF" << endl;
@@ -191,5 +193,18 @@ void UI::changeInvestment()
 		cout << i + 1<<". " << invTab[i]->getMoney() << endl;
 
 	invManager.changeCurrentInv(ChoiceInt(1, invTab.size())-1);
+}
+
+void UI::accountSummary()
+{	
+	if (invManager.getCurrentInv() == NULL)
+		return;
+	std::cout << fixed;
+	cout << "Primary amount of money: " << setprecision(2) << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName() << endl;
+	cout << "An investment rate: " << setprecision(2) << invManager.getCurrentInv()->getPercent() << "%" << endl;
+	cout << "Investment period: " << invManager.getCurrentInv()->getMonths() << " months." << endl << endl;
+	cout << "Money plus profit: " <<setprecision(2) <<invManager.getCurrentInv()->getAccountBalance() <<" " << invManager.getCurrentInv()->getCurrName() << endl;
+	cout << "Profit: " << setprecision(2) << invManager.getCurrentInv()->getProfit() << " " << invManager.getCurrentInv()->getCurrName() << endl << endl;
+	cout << "Press ENTER to continue..." << endl;
 }
 

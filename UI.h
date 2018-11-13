@@ -2,6 +2,8 @@
 #include "currency.h"
 #include "investment.h"
 #include "investmentManager.h"
+#include "test.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -11,6 +13,7 @@ private:
 	const int MainMenuChoices = 2;
 	const int InvestmentMenuChoices = 6;
 	InvestmentManager invManager;
+	Test test;
 public:
 	UI();
 	~UI();
@@ -26,5 +29,6 @@ public:
 	void changeInvRate();
 	void changeCurrency();
 	void changeInvestment();
+	void accountSummary();
 };
 

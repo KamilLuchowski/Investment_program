@@ -18,20 +18,11 @@ Investment::Investment()
 Investment::~Investment()
 {
 }
-/* //probably never used, to delete
-Investment::Investment(double m_money, double m_percent, int m_months, std::string m_currName)
-{
-	money = m_money;
-	moneyPlusProfit = m_money;
-	percent = m_percent;
-	months = m_months;
-	currName = m_currName;
-}
-*/
 
-void Investment::setPercent(double m_percent)
+void Investment::changePercent(double m_percent)
 {
 	percent = m_percent;
+	countInvestment();
 }
 
 void Investment::setMoney(double m_money)
@@ -47,6 +38,11 @@ void Investment::setMonths(int m_months)
 void Investment::setCurrency(std::string m_currName)
 {
 	currName = m_currName;
+}
+
+void Investment::setPercent(double m_percent)
+{
+	percent = m_percent;
 }
 
 void Investment::changeCurrency(std::string new_name)
