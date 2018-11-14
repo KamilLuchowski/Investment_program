@@ -2,7 +2,6 @@
 
 #pragma once
 #include <iostream>
-#include "currency.h"
 #include <map>
 #include <string>
 
