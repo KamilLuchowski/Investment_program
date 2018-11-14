@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Test
+class Test //this class test all the functions of the program
 {
 private:
 	InvestmentManager invManager;
@@ -15,7 +15,7 @@ public:
 	Test();
 	~Test();
 
-	void testAll();
+	void testAll(); //run the whole test
 	void addInvestment(double money, double percent, int months);
 	void deleteInvestment();
 	void chooseInvestment(int nr);

@@ -47,8 +47,7 @@ void Investment::setPercent(double m_percent)
 
 void Investment::changeCurrency(std::string new_name)
 {
-	std::cout <<"CENA: "<< currTab[currName][new_name] <<std::endl;
-	money = money * currTab[currName][new_name];
+	money = money * currTab[currName][new_name]; 
 	currName = new_name;
 	countInvestment();
 }

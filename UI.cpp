@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "UI.h"
 
-
 UI::UI()
 {
 }
@@ -12,7 +11,7 @@ UI::~UI()
 
 int UI::mainMenu()
 {
-	cout << "Welcome to the Investment Simulator v1.0." << endl <<endl;
+	cout << "Welcome to the Investment Simulator v1.0." << endl << "Copyright (c) 2018 Kamil Luchowski" << endl << endl;
 	cout << "Choose an option: " << endl;
 	cout << "1.Your investment." << endl;
 	cout << "2.Auto-tests." << endl;
@@ -24,7 +23,7 @@ int UI::mainMenu()
 
 int UI::investmentMenu()
 {
-	if (invManager.getInvCounter() == 0) {
+	if (invManager.getInvCounter() == 0) { //if there is no investments, do not get permission to try to modify the investment (it's hard to edit sth which doesn't exist)
 
 		cout << "YOUR INVESTMENT MENU" << endl << endl;
 		cout << "You have no investments." << endl;
@@ -56,8 +55,8 @@ int UI::investmentMenu()
 void UI::Menu()
 {
 	int nr;
-	while (1) {
-		nr = 1; //condition to end the loop
+	while (1) { //loop is ended by exit function
+		nr = 1; //var necessary to condition to end the loop
 		switch (mainMenu())
 		{
 		case 1: {
@@ -75,7 +74,7 @@ void UI::Menu()
 					break;
 				case 4:
 					accountSummary();
-					getchar(); getchar();
+					getchar(); getchar(); //wait until user read an investment info and press the button
 					break;
 				case 5:
 					deleteInvestment();
@@ -84,9 +83,7 @@ void UI::Menu()
 					changeInvestment();
 					break;
 				case 0:
-					nr = 0;
-					break;
-				default:
+					nr = 0; //back to the main menu
 					break;
 				}
 				system("cls");
@@ -94,13 +91,11 @@ void UI::Menu()
 		}
 			break;
 		case 2: {
-			test.testAll();
+			test.testAll(); //make an auto-test
 		}	
 			break;
 		case 0: 
-			exit(0);
-		default:
-			break;
+			exit(0); //leave a program
 		}
 	}
 }
@@ -135,19 +130,19 @@ double UI::ChoiceDouble(double min, double max)
 
 void UI::addInvestment()
 {
-	Investment* tmp = invManager.addInvestment();
+	double money; 
+	double percent;
+	int months;
+	string currName;
 
 	cout << "Enter the amount of money: " <<endl;
-	tmp->setMoney(ChoiceDouble(0, 750000));
-
+	money = ChoiceDouble(0, 750000);
 	cout << "Enter the investment rate(%): " << endl;
-	tmp->setPercent(ChoiceDouble(0, 100));
-
+	percent = ChoiceDouble(0, 100);
 	cout << "Enter the period of time (in months): " << endl;
-	tmp->setMonths(ChoiceInt(1, 120));
+	months = ChoiceInt(1, 120);
 
-	tmp->setCurrency("PLN");
-	tmp->countInvestment();
+	invManager.addInvestment(money, percent, months);
 }
 
 void UI::deleteInvestment()
@@ -163,6 +158,9 @@ void UI::changeInvRate()
 
 void UI::changeCurrency()
 {	
+	if (invManager.getCurrentInv()->getCurrName() != "PLN") //currency converter works only one way: PLN->other
+		return;
+
 	cout << "Enter the currency you want convert to: (EUR/GBP/CHF)" << endl;
 	cout << "1.EUR" << endl;
 	cout << "2.CHF" << endl;
@@ -190,16 +188,16 @@ void UI::changeInvestment()
 	vector<Investment*>* tmp = invManager.getInvestments();
 	vector <Investment*> invTab = *tmp;
 	for (int i = 0; i < (invTab).size(); i++)
-		cout << i + 1<<". " << invTab[i]->getMoney() << endl;
+		cout << i + 1<<". " << invTab[i]->getMoney() <<" "<<invTab[i]->getCurrName() << endl; //printing out the investments
 
-	invManager.changeCurrentInv(ChoiceInt(1, invTab.size())-1);
+	invManager.chooseInvestment(ChoiceInt(1, invTab.size())-1);
 }
 
 void UI::accountSummary()
 {	
-	if (invManager.getCurrentInv() == NULL)
+	if (invManager.getCurrentInv() == NULL) 
 		return;
-	std::cout << fixed;
+	cout << fixed;
 	cout << "Primary amount of money: " << setprecision(2) << invManager.getCurrentInv()->getMoney() << " " << invManager.getCurrentInv()->getCurrName() << endl;
 	cout << "An investment rate: " << setprecision(2) << invManager.getCurrentInv()->getPercent() << "%" << endl;
 	cout << "Investment period: " << invManager.getCurrentInv()->getMonths() << " months." << endl << endl;
