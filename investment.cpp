@@ -9,10 +9,10 @@ Investment::Investment()
 	currName = "PLN";
 
 	//currency rates
-	currTab["PLN"]["USD"] = 3.78;
-	currTab["PLN"]["EUR"] = 4.29;
-	currTab["PLN"]["CHF"] = 3.76;
-	currTab["PLN"]["GBP"] = 4.91;
+	currTab["PLN"]["USD"] = 0.26;
+	currTab["PLN"]["EUR"] = 0.23;
+	currTab["PLN"]["CHF"] = 0.27;
+	currTab["PLN"]["GBP"] = 0.20;
 }
 
 Investment::~Investment()

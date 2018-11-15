@@ -135,11 +135,11 @@ void UI::addInvestment()
 	int months;
 	string currName;
 
-	cout << "Enter the amount of money: " <<endl;
+	cout << "Enter the amount of money(0-750000): " <<endl;
 	money = ChoiceDouble(0, 750000);
-	cout << "Enter the investment rate(%): " << endl;
+	cout << "Enter the investment rate(%)(0-100): " << endl;
 	percent = ChoiceDouble(0, 100);
-	cout << "Enter the period of time (in months): " << endl;
+	cout << "Enter the period of time (in months)(1-120): " << endl;
 	months = ChoiceInt(1, 120);
 
 	invManager.addInvestment(money, percent, months);
@@ -161,7 +161,7 @@ void UI::changeCurrency()
 	if (invManager.getCurrentInv()->getCurrName() != "PLN") //currency converter works only one way: PLN->other
 		return;
 
-	cout << "Enter the currency you want convert to: (EUR/GBP/CHF)" << endl;
+	cout << "Enter the currency you want convert to: " << endl;
 	cout << "1.EUR" << endl;
 	cout << "2.CHF" << endl;
 	cout << "3.GBP" << endl;
