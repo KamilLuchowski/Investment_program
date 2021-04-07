@@ -1,1 +1,2 @@
-# PROI_ONE
+Simple program to practise OOP in C++
+
